@@ -6,7 +6,7 @@ import javax.persistene.Id;
 
 @Getter
 @Entity
-publc class UserRole {
+public class UserRole {
   @Id
   private Long id;
   
