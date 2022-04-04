@@ -13,5 +13,5 @@ publc class UserRole {
   private String username;
   private String password; 
   private boolean enabled;
-  prviate UserRole userRole;
+  private UserRole userRole;
 }
