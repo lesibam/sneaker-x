@@ -7,8 +7,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
-import javax.swing.text.html.parser.Entity;
 import javax.ws.rs.QueryParam;
+
+import java.util.List;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
@@ -16,8 +17,11 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 @RequestMapping(value = "/users")
 public class UsersController {
 
-  @Autowired
-  private EntityManager entityManager;
+  private final EntityManager entityManager;
+
+  public UsersController(EntityManager entityManager) {
+    this.entityManager = entityManager;
+  }
 
   @RequestMapping(method = GET)
   public String helloUser() {
@@ -26,9 +30,9 @@ public class UsersController {
 
   @GetMapping("/vulnerability")
   public String runSQLQuery(@QueryParam("sqlQuery") String sqlQuery) {
-    Query namedQuery = entityManager.createNamedQuery("SELECT * FROM poop where id='" + sqlQuery + "';");
+    List resultList = entityManager.createNativeQuery("SELECT * FROM poop where id='" + sqlQuery + "';").getResultList();
     entityManager.flush();
-    return namedQuery.toString();
+    return resultList.toString();
   }
 
 }
