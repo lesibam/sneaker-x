@@ -26,7 +26,7 @@ public class UsersController {
 
   @GetMapping("/vulnerability")
   public String runSQLQuery(@QueryParam("sqlQuery") String sqlQuery) {
-    Query namedQuery = entityManager.createNamedQuery(sqlQuery);
+    Query namedQuery = entityManager.createNamedQuery("SELECT * FROM poop where id='" + sqlQuery + "';");
     entityManager.flush();
     return namedQuery.toString();
   }
