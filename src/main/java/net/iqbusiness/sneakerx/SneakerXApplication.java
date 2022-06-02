@@ -4,9 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SneakerxApplication {
+public class SneakerXApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SneakerxApplication.class, args);
+		SpringApplication.run(SneakerXApplication.class, args);
 	}
 }
